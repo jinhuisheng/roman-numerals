@@ -4,5 +4,11 @@
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="roman-numerals.main" target="1.8" />
+      <module name="roman-numerals.test" target="1.8" />
+      <module name="romon-numerals.main" target="1.8" />
+      <module name="romon-numerals.test" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
