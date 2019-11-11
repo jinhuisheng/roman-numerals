@@ -1,5 +1,5 @@
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author huisheng.jin
@@ -7,60 +7,54 @@ import java.util.stream.IntStream;
  */
 public class RomanNumerals {
 
-    private static final String I = "I";
-    private static final String ROMAN_FIVE = "V";
-    private static final String ROMAN_TEN = "X";
-    private static final int ARABIC_FIVE = 5;
-    private static final int ARABIC_TEN = 10;
-    private int number;
-    private StringBuilder result = new StringBuilder();
+    private final StringBuilder result = new StringBuilder();
+    private final List<Integer> eachUnitNumbers;
 
     private RomanNumerals(int number) {
-        this.number = number;
+        this.eachUnitNumbers = createUnitNumbers(number);
     }
 
     public static String convert(int number) {
         RomanNumerals romanNumerals = new RomanNumerals(number);
-        return romanNumerals.convert();
+        romanNumerals.convert();
+        return romanNumerals.getResult();
     }
 
-    private String convert() {
-        convertBiggerThanOrEqualsTen();
-        convertLessThanOrEqualsNine();
-        return result.toString();
+    private String getResult() {
+        return this.result.toString();
     }
 
-    private void convertBiggerThanOrEqualsTen() {
-        if (number >= ARABIC_TEN) {
-            result.append(collectRoman(number / ARABIC_TEN, ROMAN_TEN));
+    private void convert() {
+        for (int currentUnitIndex = eachUnitNumbers.size() - 1
+             ; currentUnitIndex >= 0; currentUnitIndex--) {
+            convertUnitNumber(currentUnitIndex);
         }
     }
 
-    private void convertLessThanOrEqualsNine() {
-        if (number % ARABIC_TEN == ARABIC_TEN - 1) {
-            result.append(join(I) + ROMAN_TEN);
-        } else {
-            result.append(convertSmallThanNine(number % ARABIC_TEN));
-        }
+    private void convertUnitNumber(int currentUnitIndex) {
+        UnitNumberConverter unitNumberConverter = UnitNumberConverter.getByIndex(currentUnitIndex);
+        Integer currentDigitNumber = eachUnitNumbers.get(currentUnitIndex);
+        this.result.append(unitNumberConverter.convert(currentDigitNumber,currentUnitIndex));
     }
 
-    private static String convertSmallThanNine(int number) {
-        if (number == ARABIC_FIVE - 1) {
-            return join(I) + ROMAN_FIVE;
-        }
-        if (number >= ARABIC_FIVE) {
-            return ROMAN_FIVE + collectRoman(number - ARABIC_FIVE, I);
-        }
-        return collectRoman(number, I);
+    private List<Integer> createUnitNumbers(int number) {
+        char[] chars = getNumberCharOrderByUnitFromHighToLow(number);
+        return getUnitNumbers(chars);
     }
 
-    private static String collectRoman(int number, String romanTen) {
-        return IntStream.range(0, number)
-                .mapToObj(String::valueOf).map(str -> join(romanTen))
-                .collect(Collectors.joining());
+    private List<Integer> getUnitNumbers(char[] chars) {
+        List<Integer> eachUnitNumbers = new ArrayList<>();
+        for (char aChar : chars) {
+            eachUnitNumbers.add(Integer.parseInt(String.valueOf(aChar)));
+        }
+        return eachUnitNumbers;
     }
 
-    private static String join(String roman) {
-        return roman;
+    private char[] getNumberCharOrderByUnitFromHighToLow(int number) {
+        return new StringBuilder(String.valueOf(number))
+                .reverse()
+                .toString()
+                .toCharArray();
     }
+
 }

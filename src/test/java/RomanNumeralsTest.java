@@ -1,4 +1,3 @@
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -39,6 +38,53 @@ public class RomanNumeralsTest {
             "18,XVIII",
             "19,XIX",
             "20,XX",
+
+            "21,XXI",
+            "22,XXII",
+
+            "24,XXIV",
+            "25,XXV",
+
+            "29,XXIX",
+            "30,XXX",
+            "31,XXXI",
+            "39,XXXIX",
+
+            "40,XL",
+            "41,XLI",
+            "42,XLII",
+            "43,XLIII",
+            "44,XLIV",
+            "45,XLV",
+            "46,XLVI",
+            "47,XLVII",
+
+            "50,L",
+            "51,LI",
+            "61,LXI",
+            "81,LXXXI",
+            "91,XCI",
+            "97,XCVII",
+            "101,CI",
+            "102,CII",
+
+            "502,DII",
+            "572,DLXXII",
+            "872,DCCCLXXII",
+
+            "901,CMI",
+            "989,CMLXXXIX",
+            "999,CMXCIX",
+
+
+            "1001,MI",
+            "2751,MMDCCLI",
+            "2751,MMDCCLI",
+
+            "10000,MMMMMMMMMM",
+            "11000,MMMMMMMMMMM",
+            "12000,MMMMMMMMMMMM",
+            "132000,MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM",
 
     })
     void convert(Integer number, String expectedValue) {
