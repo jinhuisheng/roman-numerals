@@ -61,6 +61,7 @@ public class RomanNumeralsTest {
 
             "50,L",
             "51,LI",
+            "60,LX",
             "61,LXI",
             "81,LXXXI",
             "91,XCI",
@@ -78,13 +79,12 @@ public class RomanNumeralsTest {
 
 
             "1001,MI",
-            "2751,MMDCCLI",
-            "2751,MMDCCLI",
-
-            "10000,MMMMMMMMMM",
-            "11000,MMMMMMMMMMM",
-            "12000,MMMMMMMMMMMM",
-            "132000,MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM",
+//            "2751,MMDCCLI",
+//
+//            "10000,MMMMMMMMMM",
+//            "11000,MMMMMMMMMMM",
+//            "12000,MMMMMMMMMMMM",
+//            "132000,MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM",
 
     })
     void convert(Integer number, String expectedValue) {
