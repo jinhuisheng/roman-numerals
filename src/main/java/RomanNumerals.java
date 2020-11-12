@@ -37,11 +37,16 @@ public class RomanNumerals {
     }
 
     public static String convert(Integer number) {
-        List<UnitNumber> list = createUnitNumbers(number);
-        return countUnitNumbers(list);
+        return countEqualOrMoreThanTenThousand(number / 10000)
+        +  countUnitNumbers(number % 10000);
     }
 
-    private static String countUnitNumbers(List<UnitNumber> list) {
+    private static String countEqualOrMoreThanTenThousand(int moreThanTenThousandNumber) {
+        return IntStream.range(0, moreThanTenThousandNumber*10).boxed().map(i -> "M").collect(Collectors.joining());
+    }
+
+    private static String countUnitNumbers(Integer number) {
+        List<UnitNumber> list = createUnitNumbers(number );
         return list.stream().map(item -> countUnitNumber(item.getNumber(), item.getUnit()))
                 .collect(Collectors.joining());
     }
@@ -61,6 +66,7 @@ public class RomanNumerals {
         map.put(2, "ten");
         map.put(3, "hundred");
         map.put(4, "thousand");
+
         return map.get(i + 1);
     }
 

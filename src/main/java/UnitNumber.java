@@ -7,7 +7,6 @@ public class UnitNumber {
     private final String unit;
 
     public UnitNumber(Integer number, String unit) {
-
         this.number = number;
         this.unit = unit;
     }
