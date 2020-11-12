@@ -1,9 +1,6 @@
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
-
-import static java.util.Comparator.reverseOrder;
 
 /**
  * @author huisheng.jin
@@ -40,29 +37,8 @@ public class RomanNumerals {
     }
 
     public static String convert(Integer number) {
-//        List<UnitNumber> list = createUnitNumbers(number);
-//        return countUnitNumbers(list);
-
-        if (number >= 1000) {
-            return countUnitNumber(number / 1000, "thousand")
-                    + countUnitNumber(number % 1000 / 100, "hundred")
-                    + countUnitNumber(number % 1000 % 100 / 10, "ten")
-                    + countUnitNumber(number % 10, "digit");
-        }
-
-        if (number >= 100) {
-            return countUnitNumber(number / 100, "hundred")
-                    + countUnitNumber(number % 100 / 10, "ten")
-                    + countUnitNumber(number % 10, "digit");
-        }
-        if (number >= 10) {
-            return countUnitNumber(number / 10, "ten")
-                    + countUnitNumber(number % 10, "digit");
-        }
-        return
-
-                countUnitNumber(number, "digit");
-
+        List<UnitNumber> list = createUnitNumbers(number);
+        return countUnitNumbers(list);
     }
 
     private static String countUnitNumbers(List<UnitNumber> list) {
