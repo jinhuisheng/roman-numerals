@@ -13,10 +13,14 @@ public class RomanNumerals {
     private static final int NUMBER_ZERO = 0;
 
     public static String convert(Integer number) {
-        return convertThousandDigitNumber(number / 1000)
-                + convertHundredDigitNumber((number % 1000) / 100)
-                + convertTenDigitNumber((number % 1000) % 100 / 10)
-                + convertDigit((number % 1000) % 10);
+        int thousandDigitNumber = number / 1000;
+        int hundredDigitNumber = (number % 1000) / 100;
+        int tenDigitNumber = (number % 1000) % 100 / 10;
+        int digitNumber = (number % 1000) % 10;
+        return convertThousandDigitNumber(thousandDigitNumber)
+                + convertHundredDigitNumber(hundredDigitNumber)
+                + convertTenDigitNumber(tenDigitNumber)
+                + convertDigit(digitNumber);
     }
 
     private static String convertThousandDigitNumber(int number) {
