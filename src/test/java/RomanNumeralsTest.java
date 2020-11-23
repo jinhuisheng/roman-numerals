@@ -64,11 +64,13 @@ public class RomanNumeralsTest {
             "60,LX",
             "61,LXI",
             "81,LXXXI",
+            "90,XC",
             "91,XCI",
             "97,XCVII",
             "101,CI",
             "102,CII",
 
+            "402,CDII",
             "502,DII",
             "572,DLXXII",
             "872,DCCCLXXII",
@@ -78,6 +80,7 @@ public class RomanNumeralsTest {
             "999,CMXCIX",
 
 
+            "1000,M",
             "1001,MI",
             "2751,MMDCCLI",
 
