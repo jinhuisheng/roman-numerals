@@ -20,7 +20,7 @@ public class RomanNumerals {
         return convertThousandDigitNumber(thousandDigitNumber)
                 + convertHundredDigitNumber(hundredDigitNumber)
                 + convertTenDigitNumber(tenDigitNumber)
-                + convertDigit(digitNumber);
+                + convertDigitNumber(digitNumber);
     }
 
     private static String convertThousandDigitNumber(int number) {
@@ -28,43 +28,29 @@ public class RomanNumerals {
     }
 
     private static String convertHundredDigitNumber(int number) {
-        return convertTemp(number
-                , "C"
-                , "CD"
-                , "D"
-                , "CM");
+        return convertTemp(number, "hundredDigit");
     }
 
     private static String convertTenDigitNumber(int number) {
-        return convertTemp(number
-                , "X"
-                , "XL"
-                , "L"
-                , "XC");
+        return convertTemp(number, "tenDigit");
     }
 
-    private static String convertDigit(Integer number) {
-        return convertTemp(number
-                , "I"
-                , "IV"
-                , "V"
-                , "IX");
+    private static String convertDigitNumber(Integer number) {
+        return convertTemp(number, "digit");
     }
 
-    private static String convertTemp(Integer number
-            , String currentDigitRomanNumberOne
-            , String currentDigitRomanNumberFour
-            , String currentDigitRomanNumberFive
-            , String currentDigitRomanNumberNine) {
+    private static String convertTemp(Integer number, String digitName) {
+        ConvertDigitRoman convertDigitRoman = ConvertDigitRomans.getDigitRoman(digitName);
+        String currentDigitRomanNumberOne = convertDigitRoman.getCurrentDigitRomanNumberOne();
         if (number == NUMBER_NINE) {
-            return currentDigitRomanNumberNine;
+            return convertDigitRoman.getCurrentDigitRomanNumberNine();
         }
         if (number >= NUMBER_FIVE) {
-            return currentDigitRomanNumberFive
+            return convertDigitRoman.getCurrentDigitRomanNumberFive()
                     + convertNumber(number - 5, currentDigitRomanNumberOne);
         }
         if (number == NUMBER_FOUR) {
-            return currentDigitRomanNumberFour;
+            return convertDigitRoman.getCurrentDigitRomanNumberFour();
         }
         return convertNumber(number, currentDigitRomanNumberOne);
     }
