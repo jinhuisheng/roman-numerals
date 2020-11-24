@@ -47,7 +47,7 @@ public class RomanNumerals {
         }
         if (number >= NUMBER_FIVE) {
             return convertDigitRoman.getCurrentDigitRomanNumberFive()
-                    + convertNumber(number - 5, currentDigitRomanNumberOne);
+                    + convertNumber(number - NUMBER_FIVE, currentDigitRomanNumberOne);
         }
         if (number == NUMBER_FOUR) {
             return convertDigitRoman.getCurrentDigitRomanNumberFour();
